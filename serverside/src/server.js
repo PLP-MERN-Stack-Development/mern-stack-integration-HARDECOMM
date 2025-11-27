@@ -9,12 +9,14 @@ const commentRoutes = require("./routes/commentRoutes");
 const app = express();
 app.use(express.json());
 
-// ✅ CORS setup (allow local + deployed frontend)
 const cors = require("cors");
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://blog-app-neon-three-19.vercel.app"
-];
+
+// ✅ Read allowed origins from .env
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(",")
+  : [];
+
+// ✅ CORS setup using .env origins
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin || allowedOrigins.includes(origin)) {
