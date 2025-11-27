@@ -11,17 +11,22 @@ app.use(express.json());
 
 const cors = require("cors");
 
-// ✅ Read allowed origins from .env
+// ✅ Read allowed origins from .env (comma-separated list)
 const allowedOrigins = process.env.ALLOWED_ORIGINS
-  ? process.env.ALLOWED_ORIGINS.split(",")
+  ? process.env.ALLOWED_ORIGINS.split(",").map(origin => origin.trim())
   : [];
 
 // ✅ CORS setup using .env origins
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
+    // allow requests with no origin (like curl, mobile apps)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
       return callback(null, true);
     }
+
+    console.error(`Blocked by CORS: ${origin}`);
     return callback(new Error("Not allowed by CORS"));
   },
   credentials: true
