@@ -1,78 +1,158 @@
-# MERN Stack Integration Assignment
+# 📝 MyBlog
 
-This assignment focuses on building a full-stack MERN (MongoDB, Express.js, React.js, Node.js) application that demonstrates seamless integration between front-end and back-end components.
+A full-stack blogging platform built with **React**, **Node.js/Express**, and **MongoDB**.  
+Users can browse posts publicly, register/login to create and edit posts, and engage with comments.  
+Includes authentication, protected routes, categories, and a personalized dashboard.
 
-## Assignment Overview
+---
 
-You will build a blog application with the following features:
-1. RESTful API with Express.js and MongoDB
-2. React front-end with component architecture
-3. Full CRUD functionality for blog posts
-4. User authentication and authorization
-5. Advanced features like image uploads and comments
+## 🚀 Features
 
-## Project Structure
+- **Public browsing**
+  - View all posts
+  - Read individual posts
+  - Browse posts by category
+- **Authentication**
+  - Register and login with JWT
+  - Protected routes for creating, editing, and profile access
+- **Dashboard**
+  - Personalized landing page after login
+  - Quick links to create or view posts
+- **Posts**
+  - Create, edit, delete posts
+  - Slug-based URLs
+  - Category assignment
+- **Comments**
+  - View comments publicly
+  - Add comments when logged in
+- **Profile**
+  - View your own posts
+  - Edit or delete posts from profile
+- **UI**
+  - Responsive design with TailwindCSS
+  - Styled navbar with gradient background
+  - Card layout for posts
 
-```
-mern-blog/
-├── client/                 # React front-end
-│   ├── public/             # Static files
-│   ├── src/                # React source code
-│   │   ├── components/     # Reusable components
-│   │   ├── pages/          # Page components
-│   │   ├── hooks/          # Custom React hooks
-│   │   ├── services/       # API services
-│   │   ├── context/        # React context providers
-│   │   └── App.jsx         # Main application component
-│   └── package.json        # Client dependencies
-├── server/                 # Express.js back-end
-│   ├── config/             # Configuration files
-│   ├── controllers/        # Route controllers
-│   ├── models/             # Mongoose models
-│   ├── routes/             # API routes
-│   ├── middleware/         # Custom middleware
-│   ├── utils/              # Utility functions
-│   ├── server.js           # Main server file
-│   └── package.json        # Server dependencies
-└── README.md               # Project documentation
-```
+---
 
-## Getting Started
+## 🛠 Tech Stack
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Follow the setup instructions in the `Week4-Assignment.md` file
-4. Complete the tasks outlined in the assignment
+| Layer      | Technology                                  |
+|------------|---------------------------------------------|
+| Frontend   | React, React Router, Axios, TailwindCSS     |
+| Backend    | Node.js, Express                            |
+| Database   | MongoDB, Mongoose                          |
+| Authentication | JWT, bcrypt                            |
+| Deployment | Vercel (frontend), Render/Heroku (backend), MongoDB Atlas |
 
-## Files Included
+---
 
-- `Week4-Assignment.md`: Detailed assignment instructions
-- Starter code for both client and server:
-  - Basic project structure
-  - Configuration files
-  - Sample models and components
+## 📂 Project Structure
 
-## Requirements
+myblog/
+├── backend/
+│ ├── models/ # Mongoose schemas (User, Post, Comment)
+│ ├── routes/ # Express routes
+│ ├── controllers/ # Business logic
+│ └── server.js # Entry point
+├── frontend/
+│ ├── src/
+│ │ ├── api/ # Axios API helpers
+│ │ ├── components/ # Navbar, ProtectedRoute, PostList
+│ │ ├── context/ # AuthContext
+│ │ ├── pages/ # Home, AllPosts, PostDetail, CreateEditPage, Profile, Dashboard, Login, Register
+│ │ └── App.jsx # Routes
+└── README.md
 
-- Node.js (v18 or higher)
-- MongoDB (local installation or Atlas account)
-- npm or yarn
-- Git
+text
 
-## Submission
+---
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+## ⚙️ Installation & Setup
 
-1. Complete both the client and server portions of the application
-2. Implement all required API endpoints
-3. Create the necessary React components and hooks
-4. Document your API and setup process in the README.md
-5. Include screenshots of your working application
+### 1. Clone the repo
+git clone https://github.com/yourusername/myblog.git
+cd myblog
 
-## Resources
+text
 
-- [MongoDB Documentation](https://docs.mongodb.com/)
-- [Express.js Documentation](https://expressjs.com/)
-- [React Documentation](https://react.dev/)
-- [Node.js Documentation](https://nodejs.org/en/docs/)
-- [Mongoose Documentation](https://mongoosejs.com/docs/) 
+### 2. Backend setup
+cd backend
+npm install
+
+text
+
+Create a `.env` file in `backend/` with:
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+
+text
+
+Run the backend:
+npm run dev
+
+text
+
+### 3. Frontend setup
+cd ../frontend
+npm install
+
+text
+
+Create `.env` file in `frontend/` with:
+VITE_API_URL=http://localhost:5000/api
+
+text
+
+Run frontend:
+npm run dev
+
+text
+
+---
+
+## 🔑 API Endpoints
+
+- **Auth**
+  - `POST /api/auth/register` → Register new user
+  - `POST /api/auth/login` → Login user
+- **Posts**
+  - `GET /api/posts` → Get all posts
+  - `GET /api/posts/:slug` → Get single post
+  - `POST /api/posts` → Create post (auth required)
+  - `PUT /api/posts/:slug` → Update post (auth required)
+  - `DELETE /api/posts/:slug` → Delete post (auth required)
+  - `GET /api/posts/user/me` → Get logged-in user’s posts
+  - `GET /api/posts/category/:category` → Get posts by category
+- **Comments**
+  - `GET /api/comments/:postId` → Get comments for post
+  - `POST /api/comments/:postId` → Add comment (auth required)
+
+---
+
+## 🎨 Screenshots
+
+- Home Page: Recent posts preview
+- All Posts: Grid of posts with category filter
+- Post Detail: Full post + comments
+- Dashboard: Welcome message + quick links
+- Profile: User’s posts with edit/delete actions
+
+---
+
+## 📌 Future Improvements
+
+- Rich text editor for posts
+- Image upload for cover photos
+- Pagination & search
+- Dynamic category management
+- Like system for posts/comments
+
+---
+
+## 👨‍💻 Author
+
+Developed by Your Name. Feel free to contribute or fork the project!
+
+---
