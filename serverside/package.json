@@ -1,5 +1,5 @@
 {
-  "name": "oneendpoint",
+  "name": "serverside",
   "version": "1.0.0",
   "description": "MERN Blog Backend",
   "main": "src/server.js",
