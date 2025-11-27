@@ -153,6 +153,6 @@ text
 
 ## 👨‍💻 Author
 
-Developed by Your Name. Feel free to contribute or fork the project!
+Developed by Haruna Ademoye. Feel free to contribute or fork the project!
 
 ---
